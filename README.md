@@ -2,7 +2,7 @@
 
 ## 📌 Project Overview:
 
-This is a React-based eCommerce demo project that fetches products from the Fake Store API, displays them in a user-friendly interface, and allows users to:
+This is a React-based ECommerce project that fetches products from the Fake Store API, displays them in a user-friendly interface, and allows users to:
 
 - Add/remove products from a shopping cart
 
