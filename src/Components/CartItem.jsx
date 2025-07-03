@@ -30,7 +30,7 @@ const CartItem = ({ item, updateQuantity, removeFromCart }) => (
       </button>
       <button
         onClick={() => removeFromCart(item.id)}
-        className="bg-red-500 text-white px-3 py-1 ml-4 rounded"
+        className="bg-red-500 text-white px-3 py-1 ml-4 rounded cursor-pointer"
       >
         Remove
       </button>

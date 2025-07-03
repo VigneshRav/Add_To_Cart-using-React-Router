@@ -8,6 +8,7 @@ const ProductCard = ({ product, inCart, handleAddToCart }) => (
       className="h-40 object-contain mb-2"
     />
     <h2 className="font-bold">{product.title}</h2>
+    <p className="mt-2 lowercase font-serif">{product.description.slice(0,100)}...</p>
     <div className="text-amber-950 pt-4 font-semibold">
       <p>Rating: ⭐ {product.rating.rate}/5</p>
       <p>Stock Available: {product.rating.count}</p>
@@ -18,7 +19,7 @@ const ProductCard = ({ product, inCart, handleAddToCart }) => (
     <button
       onClick={() => handleAddToCart(product)}
       className={`mt-auto px-4 py-2 ${
-        inCart ? "bg-red-500" : "bg-green-500"
+        inCart ? "bg-red-600" : "bg-green-600"
       } text-white mt-4 rounded cursor-pointer`}
     >
       {inCart ? "Remove from Cart" : "Add to Cart"}

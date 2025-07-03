@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import CartItem from "../Components/CartItem";
+import { Link } from "react-router-dom";
 
 const Cart = ({ cart, updateQuantity, removeFromCart }) => {
   const [selectedItems, setSelectedItems] = useState([]);
@@ -29,8 +30,13 @@ const Cart = ({ cart, updateQuantity, removeFromCart }) => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-100 p-6">
-      <h1 className="text-3xl font-extrabold text-center mb-10 text-gray-800">
-        {" "}
+      <Link
+        to="/"
+        className="px-4 py-2 bg-gray-800 text-white rounded hover:bg-red-600 cursor-pointer"
+      >
+        ⬅ Back
+      </Link>
+      <h1 className="text-3xl mt-4 font-bold text-center mb-10 text-gray-800">
         Your Cart 🛒
       </h1>
 
@@ -41,23 +47,23 @@ const Cart = ({ cart, updateQuantity, removeFromCart }) => {
           className="h-60 w-full object-contain mb-4"
         />
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6">
           {/* Left: Cart Items */}
           <div className="md:col-span-2 space-y-10">
             {Object.entries(groupedCart).map(([category, items]) => (
               <div key={category}>
-                <h2 className="text-xl font-semibold text-gray-700 border-l-4 border-blue-500 pl-3 mb-4 uppercase tracking-wide">
+                <h2 className="text-xl font-extralight font-serif text-violet-900 border-l-4 border-orange-600 pl-3 mb-4 uppercase">
                   {category}
                 </h2>
                 <div className="space-y-4">
                   {items.map((item) => (
-                    <div key={item.id} className="relative">
-                      {/* Checkbox positioned on top-left */}
+                    <div key={item.id} className="relative  border border-amber-800">
+                      {/* Checkbox */}
                       <input
                         type="checkbox"
                         checked={isSelected(item.id)}
                         onChange={() => toggleSelect(item.id)}
-                        className="absolute top-1 left-1 w-5 h-6 z-10 accent-blue-600"
+                        className="absolute top-0.5 left-1 w-5 h-6 z-10 accent-green-600 cursor-pointer"
                         title="Select item"
                       />
                       <CartItem
@@ -72,16 +78,16 @@ const Cart = ({ cart, updateQuantity, removeFromCart }) => {
             ))}
           </div>
 
-          {/* Right: Summary Box */}
-          <div className="bg-white/90 backdrop-blur-lg rounded-xl text-center shadow-lg p-6 h-fit sticky top-6">
-            <h2 className="text-xl font-bold mb-4 text-gray-800">
-              Selected Items Summary
+          {/* Right: Total Price Card */}
+          <div className="border-2 border-amber-900 rounded text-center shadow-lg p-6 h-fit sticky top-6">
+            <h2 className="text-xl font-serif font-bold mb-4 text-gray-800">
+              Price Details for Selected Items
             </h2>
             {selectedItems.length === 0 ? (
-              <p className="text-gray-500 text-sm">No items selected.</p>
+              <p className="text-sm">No items selected.</p>
             ) : (
               <>
-                <div className="space-y-2 text-gray-700">
+                <div className="space-y-2">
                   <div className="flex justify-between">
                     <span>Total</span>
                     <span>${total.toFixed(2)}</span>
@@ -95,8 +101,8 @@ const Cart = ({ cart, updateQuantity, removeFromCart }) => {
                     <span>${finalTotal.toFixed(2)}</span>
                   </div>
                 </div>
-                <button className="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition">
-                  Checkout Selected
+                <button className="mt-6 font-serif w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition cursor-pointer">
+                  Proceed to Buy
                 </button>
               </>
             )}
