@@ -57,7 +57,10 @@ const Cart = ({ cart, updateQuantity, removeFromCart }) => {
                 </h2>
                 <div className="space-y-4">
                   {items.map((item) => (
-                    <div key={item.id} className="relative  border border-amber-800">
+                    <div
+                      key={item.id}
+                      className="relative  border border-amber-800"
+                    >
                       {/* Checkbox */}
                       <input
                         type="checkbox"

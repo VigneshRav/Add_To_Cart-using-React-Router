@@ -40,15 +40,11 @@ function App() {
     setCart(cart.filter((item) => item.id !== id));
   };
 
-  // Don't show Navbar on NotFound route
-  const hideNavbar =
-    location.pathname === "/404" ||
-    location.pathname === "*" ||
-    location.pathname === "/notfound";
+  const showNavbar = ["/", "/cart"].includes(location.pathname);
 
   return (
     <>
-      {!hideNavbar && <Navbar cartCount={cart.length} />}
+      {showNavbar && <Navbar cartCount={cart.length} />}
       <Routes>
         <Route
           path="/"

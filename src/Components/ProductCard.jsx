@@ -1,14 +1,16 @@
 import React from "react";
 
 const ProductCard = ({ product, inCart, handleAddToCart }) => (
-  <div className="border-2 border-cyan-500 p-4 flex flex-col">
+  <div className="border-1 rounded-lg border-cyan-500 p-4 flex flex-col hover:scale-102 transition shadow-lg shadow-cyan-200">
     <img
       src={product.image}
       alt={product.title}
       className="h-40 object-contain mb-2"
     />
     <h2 className="font-bold">{product.title}</h2>
-    <p className="mt-2 lowercase font-serif">{product.description.slice(0,100)}...</p>
+    <p className="mt-2 lowercase font-serif">
+      {product.description.slice(0, 100)}...
+    </p>
     <div className="text-amber-950 pt-4 font-semibold">
       <p>Rating: ⭐ {product.rating.rate}/5</p>
       <p>Stock Available: {product.rating.count}</p>
